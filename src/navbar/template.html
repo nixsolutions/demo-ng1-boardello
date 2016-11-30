@@ -1,0 +1,18 @@
+<nav class="navbar navbar-light navbar-fixed-top">
+  <div class="container-fluid">
+    <ul class="nav navbar-nav">
+      <li><a href="#boards" ng-click="navbarController.taskService.getBoardsList()"><span class="glyphicon glyphicon-th-list"></span> Boards</a></li>
+    </ul>
+    <img class="navbar-brand" src="../assets/images/boardello.png" alt="">
+    <ul class="nav navbar-nav navbar-right" ng-show="!navbarController.taskService.user.username">
+      <li><a href="#login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+    </ul>
+    <ul class="nav navbar-nav navbar-right" ng-show="navbarController.taskService.user.username">
+      <li><a href="#"><span class="glyphicon glyphicon-user"></span> {{navbarController.taskService.user.username}}</a></li>
+      <li><a href="#" ng-click="navbarController.logout()"><span class="glyphicon glyphicon-log-out"></span> Logout</a></li>
+    </ul>
+  </div>
+</nav>
+
+<boards></boards>
+<login ng-hide="navbarController.taskService.user.username"></login>

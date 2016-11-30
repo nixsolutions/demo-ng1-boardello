@@ -1,0 +1,374 @@
+
+body {
+  padding-top: 53px;
+}
+
+select {
+  height: 26px;
+}
+
+.error {
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(4, 10, 30, 0.8);
+  z-index: 99999;
+}
+
+.circle-big {
+  width: 50px;
+  height: 50px;
+  line-height: 50px;
+  text-align: center;
+  border-radius: 50%;
+  padding: 13 16 15 16;
+}
+
+.circle-small {
+  width: 35px;
+  height: 35px;
+  line-height: 35px;
+  text-align: center;
+  border-radius: 50%;
+  padding: 3 5 4 3;
+}
+
+button span, a span{
+    transition: 0.3s ease;
+}
+
+button:hover span, a:hover span{
+    transform: scale(1.5, 1.5);
+}
+
+.modal-container{
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  text-align: center;
+  transform: translate(-50%, -50%);
+  background: #fff;
+  padding: 10px;
+  box-shadow: 0px 0px 20px 0px rgba(0, 0, 0, 0.47);
+  border-radius: 4px;
+}
+
+.colums-inline{
+  white-space: nowrap;
+}
+task-column{
+    display: inline-block;
+}
+.delete-confirm {
+  display: block;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(4, 10, 30, 0.8);
+  z-index: 99999;
+}
+
+/*NAVBAR*/
+.navbar {
+  background-color: #9e3737;
+}
+
+.navbar-brand {
+  transform: translateX(-50%);
+  left: 50%;
+  position: absolute;
+  padding: 10px;
+}
+
+.navbar a{
+  color: black;
+  font-size: 18;
+}
+
+/*BOARDS*/
+.boards, .login {
+  display: block;
+  width: 300px;
+  max-height: 100%;
+  position: absolute;
+  background-color: #ddd;
+  padding: 15px;
+  top: -100%;
+  border: 1px solid black;
+  border-radius: 5px;
+  transition: top 1s cubic-bezier(.35,-0.34,.47,1);
+}
+
+.boards:target, .login:target {
+  top: 53px;
+  transition: top 1s cubic-bezier(.35,.19,.47,1.33);
+  z-index: 100;
+}
+
+.privateBoards, .publicBoards {
+  max-height: 200px;
+  overflow: auto;
+  border: 2px solid black;
+  padding: 5px;
+}
+.board-item {
+  width: 100%;
+  height: 37px;
+  border: 1px solid black;
+  margin: 5px 0;
+  padding: 0 10px 0 10px;
+  border-radius: 5px;
+  position: relative;
+  background-image: none;
+  background-color: #a03939;
+}
+
+.board-item button.remove {
+  position: absolute;
+  right: 10px;
+  top: 0;
+}
+
+.board-item a{
+  padding: 7px 0;
+  color: white;
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+.board-item a:hover{
+  text-decoration: none;
+  font-size: 16px;
+}
+
+.board-item button {
+  background-image: none;
+  background-color: #a03939;
+}
+.board-item button:hover {
+  background-color: #941212;
+}
+
+div.add-board {
+  text-align: center;
+}
+
+div.add-board a {
+  margin: 10px;
+}
+
+/*LOGIN*/
+.login {
+  right: 0;
+}
+
+.login button{
+  display: inline-block;
+}
+
+/*MAIN*/
+.empty-board-text {
+  height: 100%;
+  display: flex;
+  justify-content: center; /* align horizontal */
+  align-items: center; /* align vertical */
+}
+.empty-board-text span{
+  color: grey;
+  font-size: 30px;
+}
+
+.board {
+  margin: 50px;
+}
+.columns {
+  display: inline-block;
+}
+
+/*COLUMN*/
+.taskColumn {
+  vertical-align: top;
+  display: inline-block;
+  background-color: #ddd;
+  border-radius: 5px;
+  margin: 20 10;
+  padding: 15px;
+}
+
+.taskColumn-header {
+    position: relative;
+    padding: 10px 0 0;
+}
+
+.taskColumn .taskColumn-header input {
+  background-color: #ddd;
+  border-style: none;
+}
+
+.taskColumn-header .btn.delete {
+    position: absolute;
+    right: 0;
+    top: -100%;
+    margin-top: -10px;
+}
+
+.taskColumn .taskColumn-header input:focus {
+  background-color: white;
+  border-style: inset;
+}
+
+.column {
+  min-width: 250px;
+  min-height: 200px;
+  padding: 15px;
+}
+
+button.orederBy span {
+  width: 15px;
+  height: 15px;
+}
+
+/*PANEL*/
+.panel {
+  width: 220px;
+}
+
+.panel-placeholder {
+  display: block;
+  width: 220px;
+  height: 50px;
+  margin: 10px 0;
+  border: 2px solid #558bb9;
+  border-radius: 3px;
+  background-color: #7a9cb9;
+}
+
+.panel .panel-heading {
+    background-image: none;
+    background-color: #a03939;
+    color: black;
+    width: 100%;
+    position: relative;
+}
+
+.panel .panel-heading .priority img{
+  width: 20px;
+  height: 20px;
+}
+.panel .panel-body {
+    padding: 5px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.panel .panel-heading .task-name {
+  max-width: 100px;
+  max-height: 100px;
+  overflow: hidden;
+  word-break: break-all;
+  white-space: normal;
+}
+
+.panel .panel-heading .panel-buttons {
+  height: 40px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
+}
+
+.panel-btn {
+  background-image: none;
+  background-color: #a03939;
+  color: white;
+}
+
+.panel-btn:hover {
+  background-color: #941212;
+}
+
+.task-assign .task-assign-popup {
+  display: none;
+}
+
+.task-assign:hover .task-assign-popup {
+  display: block;
+  position: absolute;
+  top: -25px;
+  left: 20px;
+  z-index: 100;
+  background-color: #b7b3b3;
+  padding: 10px;
+  border-radius: 5px;
+}
+
+/*TASK CARD*/
+task-card {
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(4, 10, 30, 0.8);
+    z-index: 99999;
+    display: block;
+    overflow-y: auto;
+}
+
+task-card .comments {
+    max-height: 300px;
+    overflow: hidden;
+    overflow-y: auto;
+}
+
+task-card .card {
+  max-width: 800px;
+  width: 100%;
+  position: absolute;
+  top: 5%;
+  left: 50%;
+  transform: translate(-50%);
+}
+
+task-card:target .card {
+  top: -90px;
+  -moz-transition: all 0.8s ease-out;
+  -webkit-transition: all 0.8s ease-out;
+  -o-transition: all 0.8s ease-out;
+  transition: all 0.8s ease-out;
+  -webkit-transition-delay: 0.4s;
+  -moz-transition-delay: 0.4s;
+  -o-transition-delay: 0.4s;
+  -transition-delay: 0.4s;
+}
+
+task-card .panel-body {
+  margin: 0 20px;
+}
+
+task-card .row {
+  margin: 0;
+}
+
+task-card .panel-footer button {
+  margin: 0 20;
+}
+
+.card textarea {
+  width: 100%;
+  min-height: 100px;
+}
+
+.checkbox input[type="checkbox"] {
+  margin: auto;
+  position: static;
+}
+
+:disabled {
+    color: graytext;
+}

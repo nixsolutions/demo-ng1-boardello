@@ -1,0 +1,25 @@
+  <div class="empty-board-text" ng-hide="taskMainController.board.name">
+    <span>
+      Plese create a board or select from existing ones
+    </span>
+  </div>
+  <div class="board" ng-show="taskMainController.board.name">
+    <h2>{{taskMainController.board.name}}</h2>
+    <div class="row columns colums-inline" >
+      <task-column ng-repeat="column in taskMainController.board.data"
+        column="column" delete-column="taskMainController.deleteColumn(column)">
+      </task-column>
+    </div>
+    <button type="button" class="btn btn-default add-column circle-big" ng-click="taskMainController.addColumn()">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="error" ng-show="taskMainController.taskService.error.name">
+    <div class="modal-container">
+      <p><b>Something bad happened. Please contact support team. Error: {{taskMainController.taskService.error.name}}</b></p>
+      <p>{{taskMainController.taskService.error.message}}</p>
+      </br></br>
+      <button ng-click="taskMainController.taskService.error={}">Close</button>
+    </div>
+  </div>

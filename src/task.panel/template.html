@@ -1,0 +1,38 @@
+<div class="panel panel-danger">
+  <div class="panel-heading">
+    <span class="task-assign glyphicon glyphicon-user" ng-show="taskPanelController.task.assign" aria-hidden="true">
+      <span class="task-assign-popup">{{taskPanelController.task.assign}}</span>
+    </span>
+    <span ng-switch on="taskPanelController.task.priority" class="priority">
+      <img ng-switch-when="Blocker" src='../assets/images/blocker.svg'>
+      <img ng-switch-when="Critical" src='../assets/images/critical.svg'>
+      <img ng-switch-when="Major" src='../assets/images/major.svg'>
+      <img ng-switch-when="Minor" src='../assets/images/minor.svg'>
+      <img ng-switch-when="Trivial" src='../assets/images/trivial.svg'>
+    </span>
+    <span class="task-name">{{taskPanelController.task.name}}</span>
+    <div class="panel-buttons">
+      <button type="button" class="btn circle-small panel-btn" ng-click="isCardShown = true">
+        <span class="glyphicon glyphicon-pencil" aria-hidden="true"></span>
+      </button>
+      <button type="button" class="btn circle-small panel-btn" ng-click="deleteConfirm = true">
+        <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+      </button>
+    </div>
+  </div>
+  <div class="panel-body">
+    {{taskPanelController.task.description}}
+  </div>
+</div>
+
+<task-card ng-show="isCardShown" is-card-shown="isCardShown" is-new='false'
+  task="taskPanelController.task">
+</task-card>
+
+<div class="delete-confirm" ng-show="deleteConfirm">
+  <div class="modal-container">
+    <p>Remove task "{{taskPanelController.task.name}}" ?</p>
+    <button type="button" class="btn btn-danger" ng-click="deleteConfirm = false">Cancel</button>
+    <button type="button" class="btn btn-danger" ng-click="deleteConfirm = false; taskPanelController.deleteTask(this)">Remove</button>
+  </div>
+</div>

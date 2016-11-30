@@ -1,0 +1,56 @@
+<div class="boards" id="boards" >
+  <a href="#" class="close">X</a>
+  <div ng-show="boardsController.taskService.user._id">
+    <input type="text" class="search" placeholder="Search for..." ng-model="searchFilter">
+    <br/>
+    <h4>Private boards</h4>
+    <div class="privateBoards">
+        <div class="board-item" ng-repeat="board in boardsController.boards.private | filter : searchFilter">
+          <a href="#" ng-click="boardsController.taskService.getBoard(board._id)">{{board.name}}</a>
+          <button type="button" class="btn btn-danger circle-small remove" ng-click="deleteConfirmPrivate = true">
+            <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+          </button>
+          <div class="delete-confirm" ng-show="deleteConfirmPrivate">
+            <div class="modal-container">
+              <p>Remove board "{{board.name}}" ?</p>
+              <button type="button" class="btn btn-danger" ng-click="deleteConfirmPrivate = false">Cancel</button>
+              <button type="button" class="btn btn-danger" ng-click="deleteConfirmPrivate = false; boardsController.taskService.deleteBoard(board._id)">Remove</button>
+            </div>
+          </div>
+        </div>
+    </div>
+    <br/>
+    <h4>Public boards</h4>
+    <div class="publicBoards">
+      <div class="board-item" ng-repeat="board in boardsController.boards.public | filter : searchFilter">
+        <a href="#" ng-click="boardsController.taskService.getBoard(board._id)">{{board.name}}</a>
+        <button type="button" class="btn btn-danger circle-small remove" ng-click="deleteConfirmPublic = true">
+          <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+        </button>
+        <div class="delete-confirm" ng-show="deleteConfirmPublic">
+          <div class="modal-container">
+            <p>Remove board "{{board.name}}" ?</p>
+            <button type="button" class="btn btn-danger" ng-click="deleteConfirmPublic = false">Cancel</button>
+            <button type="button" class="btn btn-danger" ng-click="deleteConfirmPublic = false; boardsController.taskService.deleteBoard(board._id)">Remove</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <br/>
+    <h4>Add board</h4>
+    <div class="add-board">
+      <input ng-model="boardsController.newBoard.name"/>
+      <select ng-model="boardsController.newBoard.restriction">
+        <option value="public">public</option>
+        <option value="private">private</option>
+      </select>
+      <a href="#"  type="button" class="btn btn-danger circle-big"
+        ng-click="boardsController.taskService.addBoard(boardsController.newBoard)">
+        <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+      </a>
+    </div>
+  </div>
+  <div ng-show="!boardsController.taskService.user._id">
+    <h4>Please login to see boards</h4>
+  </div>
+</div>

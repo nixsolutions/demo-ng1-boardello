@@ -1,0 +1,41 @@
+<div class="taskColumn">
+  <div class="taskColumn-header">
+    <input type="text" ng-model="taskColumnController.column.columnName" ng-blur="taskColumnController.taskService.update()"/>
+    <button type="button" class="btn orederBy" ng-click="taskColumnController.orderByPriority()">
+      <span
+        class="glyphicon glyphicon-sort-by-attributes"
+        aria-hidden="true">
+      </span>
+    </button>
+    <button type="button" class="btn btn-danger circle-big delete" ng-click="deleteConfirm = true">
+      <span class="glyphicon glyphicon-trash" aria-hidden="true"></span>
+    </button>
+  </div>
+  <div class="taskColumn-body">
+    <ul class="column" ui-sortable="taskColumnController.sortableOptions" ng-model="taskColumnController.column.tasks">
+      <task-panel
+        ng-repeat="task in taskColumnController.column.tasks"
+        task="task"
+        delete-task="taskColumnController.deleteTask(task)">
+      </task-panel>
+    </ul>
+  </div>
+  <div class="taskColumn-footer">
+    <button type="button" class="btn btn-danger circle-big" ng-click="isCardShown = true">
+      <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+    </button>
+  </div>
+
+  <div class="delete-confirm" ng-show="deleteConfirm">
+    <div class="modal-container">
+      <p>Remove column "{{taskColumnController.column.columnName}}" with all tasks ?</p>
+      <button type="button" class="btn btn-danger" ng-click="deleteConfirm = false">Cancel</button>
+      <button type="button" class="btn btn-danger" ng-click="deleteConfirm = false; taskColumnController.deleteColumn(this)">Remove</button>
+    </div>
+  </div>
+
+  <task-card ng-show="isCardShown" is-card-shown="isCardShown" is-new="true"
+    task="taskColumnController.newTask" add-task="taskColumnController.addTask(task)">
+  </task-card>
+
+</div>
