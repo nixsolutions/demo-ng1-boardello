@@ -1,7 +1,7 @@
 Task Manager on Angular 1 - «Boardello»
 ====================================================
 
-Boardello is a simple task manager with publick and privat boards written on Angular1 and SocketIO.
+Boardello is a simple task manager with public and private boards written on Angular1 and SocketIO.
 [Demo](https://nixsolutions.github.io/demo-ng1-boardello/)
 
 Features
